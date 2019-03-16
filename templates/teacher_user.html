@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+	<script src="/static/js/jscolor.js"></script>
+  	<link rel="stylesheet" type="text/css" href="/static/css/cofal.css">
+	<link rel="icon" href="/static/img/ningmeng.ico" type="image/x-icon" />
+  	<link rel="shortcut icon" href="/static/img/ningmeng.ico" type="image/x-icon"/>
+  	<link rel="shortcut icon" href="/static/img/ningmeng.ico" type="image/x-icon"/>
+  	<meta charset="UTF-8">
+  	<title>评教系统O(∩_∩)O</title>
+</head>
+<body>
+	{% include "./files/header.html" %}
+	<div class="row com_bg">
+		<div class="col-md-8 col-md-offset-2">
+		<!--comment_list?lesson={{ lesson.lesson_name }}&id={{ lesson.id }}&kind={{ kind }}-->
+			<a class="booklist" href="/comment_list?lesson={{ teacher_lesson.lesson_name }}&id={{ teacher_lesson.id }}&kind={{ kind }}">
+				<div class="row" style="margin-top: 0px;">
+					<div class="col-md-2 col-sm-2">
+						<img src="/static/img/{{teacher_lesson.lesson_name}}.png" class="com-pic"/>
+					</div>
+					<div class="col-md-1 col-sm-1"></div>
+					<div class="col-md-9 col-sm-9 com-lesson-des">
+						<p class="school">{{ teacher_lesson.lesson_name }}</p>
+						<p class="desc"><span class="class-label">开课学院：</span>{{ teacher_lesson.school }}</p>
+						<p class="desc"><span class="class-label">授课教师：</span>{{ teacher_lesson.teacher_name }}</p>
+						<p class="desc"><span class="class-label">课程描述：</span>{{ teacher_lesson.introduction }}
+						</p>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	{% if sub %}
+	<div class="alert alert-warning">
+		<a href="#" class="close" data-dismiss="alert">
+			&times;
+		</a>
+		<strong>提示</strong>评价提交成功！
+	</div>
+	{% endif %}
+
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="teacher-card" style="margin-top: 30px;padding: 15px;">
+				<form id={{ teacher_lesson.id }} action="/teacher_submit/" method="post" onsubmit="return confirm('是否进行提交？');">
+					{% csrf_token %}
+					<input type="hidden" name="lesson_teacher_id" value="{{ teacher_lesson.id }}">
+					<input type="hidden" name="lesson_name" value="{{ teacher_lesson.lesson_name }}">
+					<input type="hidden" name="kind" value="{{ kind }}">  
+					<div style="text-align:center">评测内容:</div>
+
+					<div>教学态度：</div>
+					<div style="position: left 30px; word-spacing:155px">
+						<input type="radio" name="attitude" value="5" class="myradio" id="radio1" checked="checked"><label for="radio1">很好</label>
+						<input type="radio" name="attitude" value="4" class="myradio" id="radio2"><label for="radio2">较好</label>
+						<input type="radio" name="attitude" value="3" class="myradio" id="radio3"><label for="radio3">一般</label>
+						<input type="radio" name="attitude" value="2" class="myradio" id="radio4"><label for="radio4">较差</label>
+						<input type="radio" name="attitude" value="1" class="myradio" id="radio5"><label for="radio5">很差</label>
+					</div>
+					<div>上课内容：</div>
+					<div style="position: left 30px; word-spacing:155px">
+						<input type="radio" name="content" value="5" class="myradio" id="radio6" checked="checked"><label for="radio6">很好</label>
+						<input type="radio" name="content" value="4" class="myradio" id="radio7"><label for="radio7">较好</label>
+						<input type="radio" name="content" value="3" class="myradio" id="radio8"><label for="radio8">一般</label>
+						<input type="radio" name="content" value="2" class="myradio" id="radio9"><label for="radio9">较差</label>
+						<input type="radio" name="content" value="1" class="myradio" id="radio10"><label for="radio10">很差</label>
+					</div>
+					<div>教学方法：</div>
+					<div style="position: left 30px; word-spacing:155px">
+						<input type="radio" name="method" value="5" class="myradio" id="radio11" checked="checked"><label for="radio11">很好</label>
+						<input type="radio" name="method" value="4" class="myradio" id="radio12"><label for="radio12">较好</label>
+						<input type="radio" name="method" value="3" class="myradio" id="radio13"><label for="radio13">一般</label>
+						<input type="radio" name="method" value="2" class="myradio" id="radio14"><label for="radio14">较差</label>
+						<input type="radio" name="method" value="1" class="myradio" id="radio15"><label for="radio15">很差</label>
+					</div>
+					<div>教学成果：</div>
+					<div style="position: left 30px; word-spacing:155px">
+						<input type="radio" name="achievement" value="5" class="myradio" id="radio16" checked="checked"><label for="radio16">很好</label>
+						<input type="radio" name="achievement" value="4" class="myradio" id="radio17"><label for="radio17">较好</label>
+						<input type="radio" name="achievement" value="3" class="myradio" id="radio18"><label for="radio18">一般</label>
+						<input type="radio" name="achievement" value="2" class="myradio" id="radio19"><label for="radio19">较差</label>
+						<input type="radio" name="achievement" value="1" class="myradio" id="radio20"><label for="radio20">很差</label>
+					</div>
+					<div>上课质量：</div>
+					<div style="position: left 30px; word-spacing:155px">
+						<input type="radio" name="effect" value="5" class="myradio" id="radio21" checked="checked"><label for="radio21">很好</label>
+						<input type="radio" name="effect" value="4" class="myradio" id="radio22"><label for="radio22">较好</label>
+						<input type="radio" name="effect" value="3" class="myradio" id="radio23"><label for="radio23">一般</label>
+						<input type="radio" name="effect" value="2" class="myradio" id="radio24"><label for="radio24">较差</label>
+						<input type="radio" name="effect" value="1" class="myradio" id="radio25"><label for="radio25">很差</label>
+					</div>
+
+					<div class="row">
+						<div class="text_area">
+							<textarea name="comment" rows="4" placeholder="请输入评测内容"></textarea>
+							<button class="btn btn-primary square">提交</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

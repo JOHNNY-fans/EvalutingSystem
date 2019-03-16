@@ -1,0 +1,57 @@
+<header>
+	<!--
+	<script>
+		function checkForm(form_id){
+			var form = document.getElementById(form_id);
+			form.submit();
+			alert("submit");
+		}
+	</script>
+	-->
+	<script>
+		function Theme(color){
+			var navbarItem = document.getElementById("navbar_item");
+			var myTab = document.getElementById("myTab");
+			navbarItem.style.background = '#'+color;
+		}
+	</script>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid" id="navbar_item">
+			<div>
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle top-menu" data-toggle="dropdown">
+							<span class="glyphicon glyphicon-user"></span>
+								{% if log_in  %}{{ username }}
+								{% else %} 请登录 {% endif %}
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu" onclick="">
+							<li><a href="https://www.baidu.com/">
+								<span class="glyphicon glyphicon-thumbs-up">&emsp;</span>个人中心</a>
+							</li>
+							<li><a href="/lesson_all/">
+								<span class="glyphicon glyphicon-thumbs-up">&emsp;</span>返回主页</a>
+							</li>
+							<li><a href="#">
+								<span class="glyphicon glyphicon-thumbs-up">&emsp;</span>
+								<input name="color2" type="hidden" id="color_value" value="FF0000" onchange="Theme(this.value)">
+								<button class="jscolor {valueElement: 'color_value'}"
+									style="border: 0px; padding-left: 0px; padding-right: 0px;enable-background: false;">主题换色
+								</button></a>
+							</li>
+							<li class="divider"></li>
+							<li onclick="checkForm(logoutform)">
+								<a href="/logout/">
+								<span class="glyphicon glyphicon-log-out"></span>&emsp;退出</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://www.ecust.edu.cn/" class="top-logo">ECUST</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>

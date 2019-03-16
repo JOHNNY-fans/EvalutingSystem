@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>操作用户表</title>
+    <style type="text/css">
+        html{ text-indent:3em;}
+        body{
+        }
+        div#whole{
+            width: 100%;
+            height: 300px;
+            background-color: white;
+        }
+        div#introduction{
+            width: 69%;
+            height: 100%;
+            background-color: antiquewhite;
+            float: left;
+            border: 5px #333333 solid
+
+        }
+        div#teacher{
+            width: 29.5%;
+            height: 43.5%;
+            background-color: antiquewhite;
+            float: right;
+            border: 5px #333333 solid
+        }
+        div#information{
+            width: 29.5%;
+            height: 53%;
+            background-color: antiquewhite;
+            float: right;
+            border: 5px #000000 solid
+        }
+        div#body{
+            width: 100%;
+            height: 80%;
+            background-color: white;
+            float: left;
+            border: 1.5px #333333 solid
+
+        }
+        p
+        {
+            border-style:solid;
+            margin: 30px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    {% for comment in comments %}
+    <div>
+        <div>
+            {% if comment.recommend %}
+        </div>
+        <div>
+            &nbsp&nbsp&nbsp{{ comment.content }}
+        </div>
+        <div>
+            &nbsp&nbsp&nbsp发表于{{ comment.publish_time }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ comment.num_valuable }}人觉得本评测有价值，{{ comment.num_happy }}人觉得欢乐
+        </div>
+        <div>
+            &nbsp&nbsp&nbsp<a href="/comment?action=valuable&cid={{ comment.id }}">优秀</a>
+            &nbsp&nbsp&nbsp<a href="/comment?action=happy&cid={{ comment.id }}">欢乐</a>
+            &nbsp&nbsp&nbsp<a href="/comment?action=bad&cid={{ comment.id }}">差评</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

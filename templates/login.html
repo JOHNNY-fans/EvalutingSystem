@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+	<script src="/static/js/jscolor.js"></script>
+  <link rel="stylesheet" type="text/css" href="/static/css/cofal.css">
+	<link rel="icon" href="/static/img/ningmeng.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/static/img/ningmeng.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/static/img/ningmeng.ico" type="image/x-icon"/>
+  <meta charset="UTF-8">
+  <title>评教O(∩_∩)O</title>
+</head>
+<body>
+    {% include "./files/header.html" %}
+    <div>
+      <img src="/static/img/title.png" style="width: 100%;">
+    </div>
+    <div class="row">
+      <div class="col-md-12 title-float">
+          <h1>登录</h1>
+      </div>
+      <div class="col-md-4 col-md-offset-2 ver-line">
+        <div class="danmu">
+          <div class="danmu-bg">
+              <!--<img class="danmu-word" src="/static/img/danmu.png"/>-->
+              <p style="--time:10s;--color:rgb(219,144,25);">华理</p>
+              <p style="--time:3s;--color:rgb(162, 212, 197);">评论系统</p>
+              <p style="--time:6s;--color:rgb(162, 100, 197);">EUCST</p>
+              <p style="--time:15s;--color:rgb(255,110,151);">硬核</p>
+              <p style="--time:7s;--color:rgb(241,170,166);">太喜欢这课了，盘它！</p>
+              <p style="--time:7s;--color:rgb(12, 132, 108);">抢这门课，冲鸭！</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-md-offset-0 col-sm-offset-3">
+        <div class="login-border">
+          <form class="form-horizontal" action='login/' method='POST' >
+            {% csrf_token %}
+              <ul class="form-group">
+                <li><input type="text" class="form-control" id="username" name="username" placeholder="User Name" value=""></li> 
+                <li><input type="password" class="form-control" id="password" name="password" placeholder="Password" value=""></li>
+                <li>
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary button-center col-md-5" onsubmit="return checkform()">登录</button>
+                        <a class="btn btn-default button-right col-md-5 col-md-offset-2" 
+                          href="mailto:1394909965@qq.com">联系我们</a>
+                    </div>
+                </li>
+              </ul>
+          </form>
+        </div>
+      </div> 
+    </div>
+</body>
+</html>

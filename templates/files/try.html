@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评教系统demo版</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body style="min-width:960px;margin:0;font-size:18px;line-height:180%;"background="static/img/login_bgx.gif">
+<div style="width:960px;margin:0 auto;background-color:white;">
+    <table style="width:100%">
+        <tr>
+            <td style="width:67%;vertical-align:top;padding:5px 10px;">
+                <div style="font-weight:bold;font-size:1.1em;">课程介绍:</div>
+                <div>居然找不到介绍本书涵盖了教育部新制定的《非物理类理工学科大学物理课程教学基本要求》中的核心内容，并精选了相当数量的拓展内容. 本书在修订过程中继承了第1版的特色，采取压缩经典、简化近代、突出重点的方法精选和组织内容.
+全书共13章，涉及力学、热学、电磁学、振动和波、波动光学、狭义相对论和量子物理基础等. 每章包括基本内容之外，还包括阅读材料、复习与小结、练习题. 内容深浅适当，讲解正确清晰，叙述引人入胜，例题指导详尽，全书联系实际，特别是注意介绍物理知识和物理思想在实际中的应用. 本书有电子教材和学习辅导书等配套资料. [1]
+本书可作为高等院校非物理类专业本科少学时的大学物理教材和教学参考书，也可用作高等职业教育各专业的物理教材，还可以供其他有关专业选用和广大读者阅读。</div>
+            </td>
+            <td style="width:33%;vertical-align:top;padding:5px 0px;">
+                <div style="font-weight:bold;font-size:1.1em;">Python程序设计</div>
+                <div>任课教师：文欣秀</div>
+                <div><img src="/static/wen.png" style="width:200px;border:3px solid #000000"></div>
+                <div>课程性质：公选/必修</div>
+                <div>面向学生：大一/计算机系大二</div>
+                <div>推荐程度：{% if recommend_rate <= 0.1 %}<span style="color:darkred">特别差评</span>
+                    {% elif recommend_rate <= 0.3 %}<span style="color:darkred">多半差评</span>
+                    {% elif recommend_rate <= 0.6 %}<span style="color:darkred">褒贬不一</span>
+                    {% elif recommend_rate <= 0.85 %}<span style="color:blue">多半好评</span>
+                    {% else %}<span style="color:blue">好评如潮</span>
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div style="padding:10px;position:relative;">
+        <form action="/submit" method="post">
+            <div style="text-align:center">评测内容:</div>
+            <textarea style="width:100%;padding:0;font-size:1.2em" rows="5" name='comment'>请输入评测内容</textarea>
+            <input type="radio" name="recommend" value="推荐" checked>推荐
+            <input type="radio" name="recommend" value="不推荐">不推荐
+            <input type="submit" value="发表" style="position:absolute;right:20px;font-size:1.2em;padding:0px 20px;">
+        </form>
+    </div>
+
+    <div style="padding:5px;">
+        <div style="padding-left:10px;font-weight:bold;">所有评论：</div>
+        {% for comment in comments %}
+        <div style="border-bottom:1px solid #EEEEEE;padding:10px 0px;">
+            <div>
+                {% if comment.recommend %} {# 注释：判断语句，如果为True，1，那么显示大拇指并且显示推荐，否则为下拇指，不推荐 #}
+                &nbsp&nbsp<img src="/static/good.png" style="width:32px">
+                <span>推荐</span>
+                {% else %}
+                &nbsp&nbsp<img src="/static/bad.png" style="width:32px">
+                <span>不推荐</span>
+                {% endif %}
+            </div>
+            <div>
+                &nbsp&nbsp&nbsp{{ comment.content }}
+            </div>
+            <div style="text-align:right;margin-right:20px;font-size:0.9em;color:darkgrey">
+                &nbsp&nbsp&nbsp发表于{{ comment.publish_time }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ comment.num_valuable }}人觉得本评测有价值，{{ comment.num_happy }}人觉得欢乐
+            </div>
+            <div style="text-align:right;margin-right:20px;">
+                &nbsp&nbsp&nbsp<a href="/comment?action=valuable&cid={{ comment.id }}">优秀</a>
+                &nbsp&nbsp&nbsp<a href="/comment?action=happy&cid={{ comment.id }}">欢乐</a>
+                &nbsp&nbsp&nbsp<a href="/comment?action=bad&cid={{ comment.id }}">差评</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

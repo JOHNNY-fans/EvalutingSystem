@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课程老师表</title>
+
+</head>
+<body style="min-width:960px;margin:0;font-size:18px;line-height:180%;"background="static/img/login_bgx.gif">
+    <script src="static/js/echarts.js"></script>
+    <script src="static/js/vintage.js"></script>
+    <script src="static/js/shine.js"></script>
+    <div style="width:960px;margin:20px auto 10px;background-color:white;height: 150px;font-weight:bold;border-radius: 15px;text-indent: 0.5em;font-size: 40px;padding-top: 15px;">{{ lesson_name }}</div>
+    <div style="width:960px;margin:0 auto;background-color:white;border-radius: 15px;">
+        <div style="padding:5px;">
+
+            <div style="border-bottom:1px solid #EEEEEE;padding:10px 0px;">
+                {% for teacher in teachers %}
+                    <div style="width:800px;height:280px">
+                        <a href="comment_list?id={{ teacher.id }}&kind={{ kind }}"style="display: inline-block;text-indent:3em;height: 175px;line-height: 175px;text-decoration: none;color: #000;font-weight: bold;float:left">{{ teacher.teacher_name }}</a>
+                        <div id="teacher_echarts{{ teacher.teacher_name }}" style="display: inline-block;text-decoration: none;width:680px;height:250px;font-weight: bold;float:right"></div>
+                    </div>
+                        <script type="text/javascript">
+                        var myChart = echarts.init(document.getElementById('teacher_echarts{{ teacher.teacher_name }}'),'vintage');
+                        option = {
+                                title : {
+                                    text: '评论南丁格尔玫瑰图',
+                                    subtext: '数据虚构',
+                                    x:'center'
+                                },
+                                tooltip : {
+                                    trigger: 'item',
+                                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                },
+                                legend: {
+                                    x : 'center',
+                                    y : 'bottom',
+                                    data:['优秀','一般','差评']
+                                },
+                                toolbox: {
+                                    show : true,
+                                    feature : {
+                                        mark : {show: true},
+                                        dataView : {show: true, readOnly: false},
+                                        magicType : {
+                                            show: true,
+                                            type: ['pie', 'funnel']
+                                        },
+                                        restore : {show: true},
+                                        saveAsImage : {show: true}
+                                    }
+                                },
+                                calculable : true,
+                                series : [
+                                    {
+                                        name:'半径模式',
+                                        type:'pie',
+                                        radius : [10, 70],
+                                        center : ['25%', '50%'],
+                                        roseType : 'radius',
+                                        label: {
+                                            normal: {
+                                                show: false
+                                            },
+                                            emphasis: {
+                                                show: true
+                                            }
+                                        },
+                                        lableLine: {
+                                            normal: {
+                                                show: false
+                                            },
+                                            emphasis: {
+                                                show: true
+                                            }
+                                        },
+                                        data:[
+                                            {value:{{ teacher.num_best }}, name:'优秀'},
+                                            {value:{{ teacher.num_good }}, name:'一般'},
+                                            {value:{{ teacher.num_bad }}, name:'差评'}
+                                        ]
+                                    },
+                                    {
+                                        name:'面积模式',
+                                        type:'pie',
+                                        radius : [10, 70],
+                                        center : ['75%', '50%'],
+                                        roseType : 'area',
+                                        data:[
+                                            {value:{{ teacher.num_best }}, name:'优秀'},
+                                            {value:{{ teacher.num_good }}, name:'一般'},
+                                            {value:{{ teacher.num_bad }}, name:'差评'}
+                                        ]
+                                    }
+                                ]
+                            };
+                        myChart.setOption(option);
+                        </script>
+                    <div style="border-bottom: 1px solid #CCCCCC;margin:20px 0px;"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </body>
+</body>
+</html>

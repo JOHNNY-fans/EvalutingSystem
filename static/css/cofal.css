@@ -1,0 +1,507 @@
+body{
+    overflow-x: hidden;
+}
+
+.menu{
+    background-color: #ababab;
+}
+
+.booklist{
+    display: inline-block;
+    height: 175px;
+    width: 100%;
+    line-height: 175px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.lessonlist{
+    width:960px;
+    margin:0 auto;
+    background-color:white;
+    border-radius: 15px;
+}
+
+.lessonbox{
+    border-bottom:1px solid #EEEEEE;
+    padding:10px 0px;
+}
+
+.driveline{
+    border-bottom: 1px solid #CCCCCC;
+    margin:20px 0px;
+}
+
+.navbar{
+    background-color: rgba(255,255,255,1);
+}
+
+.school-logo{
+    margin-top: 2px;
+    width: 170px;
+}
+
+@media (max-width: 1400px) {
+    .school-logo{
+        margin-top: 4px;
+        width: 160px;
+    }
+}
+
+@media (max-width: 1350px) {
+    .school-logo{
+        margin-top: 7px;
+        width: 140px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .school-logo{
+        margin-top: 9px;
+        width: 130px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .school-logo{
+        margin-top: 9px;
+        width: 120px;
+    }
+}
+
+.web_inner_page{
+    width: 20%;
+}
+
+.top-logo{
+    font-size: 2em;
+    color: mediumblue;
+}
+
+.top-menu{
+    font-size: 1.3em;
+}
+
+.teacher-card{
+    border:1px solid rgba(155,155,155,0.1);
+    border-radius: 5px;
+    height: 290px;
+    margin: 5px 0px;
+    box-shadow: -0.5px -0.5px 10px 0px rgba(200,200,200,0.1);
+    display: flex;
+    display: -webkit-flex;
+    /* 从左端开始沿水平轴防止flex item */
+    flex-direction: row;
+    /* 强制 flex item不换行，沿着同一行堆叠 */
+    flex-wrap: nowrap;
+    /* flex item在主轴上的对齐方式，这里定义左对齐 */
+    justify-content: flex-start;
+    /* 定义交叉轴对其方式 */
+    align-items: flex-start;
+}
+
+@media (max-width: 1500px) {
+    teacher-card{
+        border:1px solid rgba(155,155,155,0.1);
+        border-radius: 5px;
+        height: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 5px 0px;
+        box-shadow: -0.5px -0.5px 10px 0px rgba(200,200,200,0.1);
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}
+
+.teacher-card-pic{
+    float: left;
+    width: 140px;
+}
+
+.teacher-card:hover{
+    box-shadow: -1px -1px 10px 3px rgba(100,100,100,0.1);
+}
+
+.teacher-card-sub{
+    float: left;
+    display: inline-block;
+    margin: 20px 10px auto 15px;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+.teacher-pho{
+    width: 80px;
+    margin: 10px 5px auto 10px;
+    display: inline-block;
+}
+
+.lesson-pic{
+    width: 120px;
+    height: 170px;
+    margin: 0px 5px 10px 10px;
+    /*display: inline-block;*/
+}
+
+.row:has(.lesson-des:first-child){
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.lesson-des p:first-of-type{
+    line-height: 25px;
+    font-size: 22px;
+    color: rgba(10,10,10,0.6)
+}
+
+.lesson-des p{
+    line-height: 15px;
+    font-size: 12px;
+    color: rgba(155,155,155,0.6)
+}
+
+.lesson-des .class-label{
+    color: rgba(100,100,100,0.8)
+}
+
+.hot-badge{
+    float: right;
+    font-size: 22px;
+    background-color: blanchedalmond;
+    text-decoration-color: #000;
+}
+
+#hot div:first-child{
+    margin-top: 15px;
+}
+
+.input-group{
+    margin-left: 10px;
+}
+
+.title-float{
+    text-align: center;
+}
+
+.button-center{
+    padding: 0px auto;
+    text-align: center;
+    margin: 0px 15px;
+}
+
+.button-right{
+    float: right;
+    padding: 0px auto;
+    text-align: center;
+    margin: 0px 15px;
+}
+
+@media (max-width: 1500px) {
+    .button-center{
+        padding: 0px auto;
+        text-align: center;
+        margin: 0px 0px;
+    }
+    .button-right{
+        float: right;
+        padding: 0px auto;
+        text-align: center;
+        margin: 0px 15px;
+    }
+}
+
+.login-border{
+    border: 1px solid rgba(100,100,100,0.1);
+    border-radius: 20px;
+    padding: 40px 50px;
+    margin: 50px auto;
+}
+
+li{
+    list-style:none;
+    padding-right: 30px; 
+}
+
+li #username{
+    margin-bottom: 20px; 
+}
+
+li #password{
+    margin-bottom: 20px;
+}
+
+.navbar{
+    margin-bottom: 0px;
+}
+
+.ver-line{
+    border-right: 1px solid rgba(10,10,10,0.6);
+    padding-right: 0px;
+}
+@media (max-width: 991px) {
+    .ver-line{
+        border-right: 0px solid rgba(10,10,10,0.6);
+    }
+}
+
+.danmu{
+    padding-left: 50px;
+    padding-right: 20px;
+    padding-top: 20px;  
+}
+
+.danmu-bg{
+    --opacity_var:0.8;
+    filter:alpha(opacity=80);
+    /* blur虚化,opacity透明度*/
+    -moz-opacity:var(--opacity_var);
+    -khtml-opacity:var(--opacity_var);
+    opacity: var(--opacity_var);
+    height: 300px;
+    float: left;
+    overflow: hidden;
+    z-index: -1;
+    width: 100%;
+    background-image: url("/static/img/danmu.jpg");
+    border-radius: 80px;
+    border-bottom-right-radius: 7px;
+}
+
+.danmu-word{
+    float: left;
+    z-index: 2;
+}
+
+@keyframes danmu{
+    from {
+      left: 100%;
+      transform: translateX(0);
+    }
+    to {
+      left: 0;
+      transform: translateX(-100%);
+    }
+}
+
+@-webkit-keyframes danmu{
+    from {
+      left: 100%;
+      transform: translateX(0);
+    }
+    to {
+      left: 0;
+      transform: translateX(-100%);
+    }
+}
+
+.danmu-bg p{
+    font-size: var(--size,2em);
+    position: relative;
+    left: 100%;
+    color: var(--color,rgb(50, 177, 228));
+    animation: danmu var(--time,10s) linear 0s infinite;
+    -webkit-animation: danmu var(--time,10s) linear 0s infinite;
+}
+
+#navbar_item{
+    background: #FFFFFF;
+}
+
+.com-pic{
+    width: 150px;
+    height: 213px;
+    margin: 0px 5px 10px 10px;
+    display: inline-block;
+}
+
+.com-lesson-des{
+    /*float: left;*/
+    margin: 0px 10px auto 35px;
+    overflow: hidden;
+    float: right;
+    /*max-width: 520px;*/
+}
+
+.row:has(.com-lesson-des:first-child){
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.com-lesson-des .school{
+    line-height: 42px;
+    font-size: 40px;
+    color: rgba(10,10,10,0.6)
+}
+
+.com-lesson-des .teacher{
+    line-height: 24px;
+    font-size: 22px;
+    color: rgba(155,155,155,0.6)
+}
+
+.com-lesson-des .desc{
+    line-height: 20px;
+    font-size: 18px;
+    color: rgba(155,155,155,0.6)
+}
+
+.com-lesson-des .class-label{
+    color: rgba(100,100,100,0.8)
+}
+
+.text_area{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.text_area textarea{
+    display: inline;
+    border-radius: 10px;
+    width: 87%;
+    resize: none;
+    float: left;
+}
+
+.square{
+    border-radius: 10px;
+    width: 85px;
+    height: 85px;
+    display: inline;
+    float: right;
+}
+
+.square:hover{
+    box-shadow: -1px -1px 10px 3px rgba(26, 172, 216, 0.2);
+}
+
+.text_area textarea:hover{
+    box-shadow: -1px -1px 10px 3px rgba(26, 172, 216, 0.2);
+}
+
+.right-radiu{
+    float: right;
+    padding-right: 140px;
+}
+
+.comment-card{
+    border:1px solid rgba(155,155,155,0.1);
+    border-radius: 5px;
+    /*height: 140px;*/
+    margin: 5px 0px;
+    box-shadow: -0.5px -0.5px 10px 0px rgba(200,200,200,0.1);
+}
+
+.comment-time{
+    padding-top: 25px;
+    float:left;
+    text-align:left;
+    margin-right:20px;
+    font-size:0.8em;
+    color:darkgrey;
+}
+
+.comment-block{
+    border-radius: 5px;
+    /*height: 140px;*/
+    margin: 20px 0px;
+    box-shadow: -0.5px -0.5px 10px 0px rgba(200,200,200,0.1);
+    padding:10px 0px;
+}
+
+.comment-block-good{
+    border:2px solid rgba(33, 106, 241,0.3);
+}
+
+.comment-block-good:hover{
+    box-shadow: -1px -1px 10px 3px rgba(47, 114, 240, 0.1);
+}
+
+.comment-block-bad{
+    border:2px solid rgba(241, 33, 33,0.3);
+}
+
+.comment-block-bad:hover{
+    box-shadow: -1px -1px 10px 3px rgba(241, 33, 33,0.1);
+}
+
+.btn-img{
+    width: 40px;
+    /*height: 40px;*/
+}
+
+.com_bg{
+    padding-top: 55px;
+    background: var(--bg,url('/static/img/head.jpg'));
+    /*background-color: #5D5D5D;*/
+    height: 330px;
+}
+
+.bg-blur{
+    --blur_var:5px;
+    --opacity_var:0.2;
+    filter:alpha(opacity=20);
+    /* blur虚化,opacity透明度*/
+    -moz-opacity:var(--opacity_var);
+    -khtml-opacity:var(--opacity_var);
+    opacity: var(--opacity_var);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    -webkit-filter: blur(var(--blur_var));
+    -moz-filter: blur(var(--blur_var));
+    -o-filter: blur(var(--blur_var));
+    -ms-filter: blur(var(--blur_var));
+    filter: blur(var(--blur_var));
+    z-index: -1;
+}
+
+.title-blur{
+    --blur_var:0px;
+    --opacity_var:1;
+    filter:alpha(opacity=100);
+    /* blur虚化,opacity透明度*/
+    -moz-opacity:var(--opacity_var);
+    -khtml-opacity:var(--opacity_var);
+    opacity: var(--opacity_var);
+    /*position: absolute;
+    left: 0px;
+    top: 0px;*/
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    -webkit-filter: blur(var(--blur_var));
+    -moz-filter: blur(var(--blur_var));
+    -o-filter: blur(var(--blur_var));
+    -ms-filter: blur(var(--blur_var));
+    filter: blur(var(--blur_var));
+    z-index: -1;
+}
+
+.float-book{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.title_book_map{
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.shadow-class:hover{
+    box-shadow: -2px -2px 10px 4px rgba(100,100,100,0.1);
+}

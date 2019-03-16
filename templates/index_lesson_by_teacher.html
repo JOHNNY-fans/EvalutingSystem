@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>老师课程表</title>
+</head>
+<body style="min-width:960px;margin:0;font-size:18px;line-height:180%;"background="static/img/login_bgx.gif">
+    <div style="width:960px;margin:20px auto 10px;background-color:white;height: 150px;font-weight:bold;border-radius: 15px;text-indent: 0.5em;font-size: 40px;padding-top: 15px;">{{ teacher_name }}</div>
+    <div style="width:960px;margin:0 auto;background-color:white;border-radius: 15px;">
+        <div style="padding:5px;">
+            <div style="border-bottom:1px solid #EEEEEE;padding:10px 0px;">
+                {% for lesson in lessons %}
+                    <div>
+                        <a href="comment_list?id={{ lesson.id }}&kind={{ kind }}" style="display: inline-block;height: 175px;line-height: 175px;text-decoration: none;color: #000;font-weight: bold;position:relative">{{ lesson.lesson_name }}
+                        <img src="static/img/{{ lesson.lesson_name }}.png" width="120px" height="170px" style="position: absolute;top:0px;left: 300px;" /></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

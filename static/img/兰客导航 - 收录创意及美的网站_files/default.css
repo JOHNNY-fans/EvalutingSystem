@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+
+.soon{
+    display: none ! important;
+}
+
+
+
+
+.lcs_switch {
+	background: #78be40;
+	display: inline-block;
+	position: relative;
+	width: 12px;
+	height: 6px;
+	margin-top: 14px;
+	border-radius: 30px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.lcs_cursor {
+    right: 1px;
+    display: inline-block;
+    position: absolute;
+    top: 1px;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background: #fff;
+    z-index: 10;
+}
+
+
+
+
+
+
