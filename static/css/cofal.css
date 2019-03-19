@@ -6,6 +6,46 @@ body{
     background-color: #ababab;
 }
 
+.navbar-self{
+    position: absolute;
+    top: 0px;
+    height: 50px;
+    opacity: 1.0;
+    width: 100%;
+    background-color: aliceblue;
+}
+
+.navbar{
+    background-color: rgba(255,255,255,0.5);
+    margin-bottom: 0px;
+}
+
+.dropdown-cofal{
+    position: absolute;
+    top: 0px;
+    background-color: rgba(255,255,255,0);
+    height: 45px;
+    font-size: 1.5em;
+    margin-left: 10px;
+    margin-top: 5px; 
+    text-decoration: none;
+}
+
+.top-menu{
+    font-size: 1.3em;
+}
+
+a.top-menu:link,a:visited,a:hover,a:active{
+    text-decoration: none;
+}
+
+.drop-cofal{
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: -5px;
+    background-color: rgba(255,255,255,0.8);
+}
+
 .booklist{
     display: inline-block;
     height: 175px;
@@ -33,10 +73,6 @@ body{
 .driveline{
     border-bottom: 1px solid #CCCCCC;
     margin:20px 0px;
-}
-
-.navbar{
-    background-color: rgba(255,255,255,1);
 }
 
 .school-logo{
@@ -79,10 +115,6 @@ body{
 .top-logo{
     font-size: 2em;
     color: mediumblue;
-}
-
-.top-menu{
-    font-size: 1.3em;
 }
 
 .teacher-card{
@@ -238,10 +270,6 @@ li #password{
     margin-bottom: 20px;
 }
 
-.navbar{
-    margin-bottom: 0px;
-}
-
 .ver-line{
     border-right: 1px solid rgba(10,10,10,0.6);
     padding-right: 0px;
@@ -309,10 +337,6 @@ li #password{
     color: var(--color,rgb(50, 177, 228));
     animation: danmu var(--time,10s) linear 0s infinite;
     -webkit-animation: danmu var(--time,10s) linear 0s infinite;
-}
-
-#navbar_item{
-    background: #FFFFFF;
 }
 
 .com-pic{
