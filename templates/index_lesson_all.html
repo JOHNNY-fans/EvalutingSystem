@@ -45,46 +45,45 @@
 			<div style="height:30px;"></div>
 
 			{% if searched %}
-			<div style="height:120px;">
+			<div">
 			{% if what == 1 %}
+			<div class="driveline"></div>
 			<div>
-				{% for i in seach_l %}
 					<div class="booklist">
 						<div class="row" style="margin-top: 0px;">
 							<div class="col-md-2 col-sm-2">
-								<img src="/static/img/{{ i.lesson_name }}.png" class="lesson-pic shadow-class"/>
+								<img src="/static/img/{{ search_l.0.lesson_name }}.png" class="lesson-pic shadow-class"/>
 							</div>
 							<div class="col-md-1 col-sm-1"></div>
 							<div class="col-md-9 col-sm-9 lesson-des">
+									<p>{{ search_l.0.lesson_name }}</p>
+					{% for d in lessons %}
+									{% if serech_l.0.lesson_name == d.lesson_name %}
 								<span class="badge hot-badge">
-									<span class="glyphicon glyphicon-fire" style="color:brown;"></span>178
+									<span class="glyphicon glyphicon-fire" style="color:brown;"></span>{{d.num_best|add:d.num_good |add:d.num_bad}}
 								</span>
-								<p>{{ i.lesson_name }}</p>
-								{% for d in lessons %}
-								{% if i.lesson_name == d.lesson_name %}
 								<p><span class="class-label">开课学院：</span>{{ search_l.school }}</p>
 								<p><a href="/comment_list?lesson={{ d.lesson_name }}&id={{ d.id }}&kind={{ kind }}"><span class="class-label">授课教师：</span>{{ d.teacher_name }}</a></p>
 								<p><span class="class-label">课程描述：</span>{{ search_l.introduction }}</p>
 								{% endif %}
-								{% endfor %}
 							</div>
 						</div>
 					</div>
 					{% endfor %}
 				</div>
+				<div class="driveline"></div>
 				{% elif what == 2 %}
-				{% for j in search_t %}
 				<div class="col-md-4 col-sm-10 col-md-offset-0 col-sm-offset-1">
 						<div class="teacher-card">
 							<div class="teacher-card-pic">
 								<img src="/static/img/logo.png" class="img-circle teacher-pho"/>
-								<p style="margin: 0px;"><strong>&emsp;{{ search_t.teacher_name }}</strong></p>
-								<p style="margin: 0px;">&emsp;{{ search_t.school }}</p>
+								<p style="margin: 0px;"><strong>&emsp;{{ search_t.0.teacher_name }}</strong></p>
+								<p style="margin: 0px;">&emsp;{{ search_t.0.school }}</p>
 							</div>
 							<div class="teacher-card-sub">
 									<label>开设课程：</label>
 									<p>{% for d in lessons %}
-											{% ifequal j.teacher_name d.teacher_name %}
+											{% ifequal search_t.0.teacher_name d.teacher_name %}
 												<a href="/comment_list?lesson={{ d.lesson_name }}&id={{ d.id }}&kind={{ kind }}">{{ d.lesson_name }}</a><br/>
 											{% endifequal %}
 										{% endfor %}</p>
@@ -92,7 +91,6 @@
 							<div></div>						
 						</div>
 					</div>
-					{% endfor %}
 			{% endif %}
 			</div>
 				{% endif %}
@@ -110,7 +108,7 @@
 					</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
 						<li><a href="#infotech" tabindex="-1" data-toggle="tab">信息科学与工程学院</a></li>
-						<li><a href="#art" tabindex="-1" data-toggle="tab">艺术设计与传媒学院</a></li>
+						<li><a href="#art" tabindex="-1" data-toggle="tab">理学院</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -147,16 +145,16 @@
 							<div class="booklist">
 								<div class="row" style="margin-top: 0px;">
 									<div class="col-md-2 col-sm-2">
-										<img src="/static/img/{{ l }}.png" class="lesson-pic shadow-class"/>
+										<img src="/static/img/{{ l.0 }}.png" class="lesson-pic shadow-class"/>
 									</div>
 									<div class="col-md-1 col-sm-1"></div>
 									<div class="col-md-9 col-sm-9 lesson-des">
-										<span class="badge hot-badge">
-											<span class="glyphicon glyphicon-fire" style="color:brown;"></span>178
-										</span>
-										<p>{{ l }}</p>
+											<p>{{ l.0 }}</p>
 										{% for d in lessons %}
-										{% if l == d.lesson_name %}
+										{% if l.0 == d.lesson_name %}
+										<span class="badge hot-badge">
+											<span class="glyphicon glyphicon-fire" style="color:brown;"></span>{{d.num_best|add:d.num_good |add:d.num_bad}}
+										</span>
 										<p><span class="class-label">开课学院：</span>{{ d.school }}</p>
 										<p><a href="/comment_list?lesson={{ d.lesson_name }}&id={{ d.id }}&kind={{ kind }}"><span class="class-label">授课教师：</span>{{ d.teacher_name }}</a></p>
 										<p><span class="class-label">课程描述：</span>{{ d.introduction }}</p>
@@ -170,10 +168,68 @@
 					{% endfor %}
 				</div>
 				<div class="tab-pane fade" id="infotech">
-					<!--此处循环课程-->
+					{% for l in lesson_set %}
+					{% if l.1 == "信息科学与工程学院" %}
+					<div class="driveline"></div>
+	                	<div>
+							<!--comment_list?lesson={{ lesson.lesson_name }}&id={{ lesson.id }}&kind={{ kind }}-->
+							<div class="booklist">
+								<div class="row" style="margin-top: 0px;">
+									<div class="col-md-2 col-sm-2">
+										<img src="/static/img/{{ l.0 }}.png" class="lesson-pic shadow-class"/>
+									</div>
+									<div class="col-md-1 col-sm-1"></div>
+									<div class="col-md-9 col-sm-9 lesson-des">
+											<p>{{ l.0 }}</p>
+										{% for d in lessons %}
+											{% if l.0 == d.lesson_name %}
+										<span class="badge hot-badge">
+											<span class="glyphicon glyphicon-fire" style="color:brown;"></span>{{d.num_best|add:d.num_good |add:d.num_bad}}
+										</span>
+										<p><span class="class-label">开课学院：</span>{{ d.school }}</p>
+										<p><a href="/comment_list?lesson={{ d.lesson_name }}&id={{ d.id }}&kind={{ kind }}"><span class="class-label">授课教师：</span>{{ d.teacher_name }}</a></p>
+										<p><span class="class-label">课程描述：</span>{{ d.introduction }}</p>
+										{% endif %}
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="driveline"></div>
+						{% endif %}
+					{% endfor %}
 				</div>
-				<div class="tab-pane fade" id="art">
-					<!--此处循环课程-->
+				<div class="tab-pane fade" id="science">
+						{% for l in lesson_set %}
+						{% if l.1 == "理学院" %}
+						<div class="driveline"></div>
+							<div>
+								<!--comment_list?lesson={{ lesson.lesson_name }}&id={{ lesson.id }}&kind={{ kind }}-->
+								<div class="booklist">
+									<div class="row" style="margin-top: 0px;">
+										<div class="col-md-2 col-sm-2">
+											<img src="/static/img/{{ l.0 }}.png" class="lesson-pic shadow-class"/>
+										</div>
+										<div class="col-md-1 col-sm-1"></div>
+										<div class="col-md-9 col-sm-9 lesson-des">
+												<p>{{ l.0 }}</p>
+												{% for d in lessons %}
+												{% if l.0 == d.lesson_name %}
+											<span class="badge hot-badge">
+												<span class="glyphicon glyphicon-fire" style="color:brown;"></span>{{d.num_best|add:d.num_good |add:d.num_bad}}
+											</span>
+											<p><span class="class-label">开课学院：</span>{{ d.school }}</p>
+											<p><a href="/comment_list?lesson={{ d.lesson_name }}&id={{ d.id }}&kind={{ kind }}"><span class="class-label">授课教师：</span>{{ d.teacher_name }}</a></p>
+											<p><span class="class-label">课程描述：</span>{{ d.introduction }}</p>
+											{% endif %}
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="driveline"></div>
+							{% endif %}
+						{% endfor %}
 				</div>
 			</div>
 			<script>
