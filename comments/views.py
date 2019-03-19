@@ -58,10 +58,10 @@ def lesson_all(request):
         if request.user.is_authenticated:
             username = request.user.username
             user_info = User.objects.get(username=username)
-            data = LessonTeacher.objects.values('id', 'lesson_name', 'teacher_name', 'school', 'introduction', )
+            data = LessonTeacher.objects.values('id', 'lesson_name', 'teacher_name', 'school', 'introduction', 'num_best', 'num_bad', 'num_good')
             tea_s = LessonTeacher.objects.values('teacher_name', 'school').annotate(Count('teacher_name')).order_by()
             teacher = LessonTeacher.objects.values('teacher_name').annotate(Count('teacher_name')).order_by()
-            lesson = list(set(LessonTeacher.objects.values_list('lesson_name', flat=True)))
+            lesson = list(set(LessonTeacher.objects.values_list('lesson_name', 'school')))
             tea_les = list(set(LessonTeacher.objects.values_list('teacher_name', 'lesson_name')))
             return render(request, 'index_lesson_all.html',
                           {'lessons': data,
@@ -89,10 +89,10 @@ def lesson_all(request):
                 what = 2
             username = request.user.username
             user_info = User.objects.get(username=username)
-            data = LessonTeacher.objects.values('id', 'lesson_name', 'teacher_name', 'school', 'introduction', )
+            data = LessonTeacher.objects.values('id', 'lesson_name', 'teacher_name', 'school', 'introduction', 'num_best', 'num_bad', 'num_good')
             tea_s = LessonTeacher.objects.values('teacher_name', 'school').annotate(Count('teacher_name')).order_by()
             teacher = LessonTeacher.objects.values('teacher_name').annotate(Count('teacher_name')).order_by()
-            lesson = list(set(LessonTeacher.objects.values_list('lesson_name', flat=True)))
+            lesson = list(set(LessonTeacher.objects.values_list('lesson_name', 'school')))
             tea_les = list(set(LessonTeacher.objects.values_list('teacher_name', 'lesson_name')))
             return render(request, 'index_lesson_all.html',
                           {'lessons': data,
